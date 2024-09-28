@@ -44,7 +44,7 @@ Prerequisites
 - pip: You need pip to install the required Python libraries.
 
 ## Steps to Install
-Clone the repository:
+### Clone the repository:
 
 - git clone https://github.com/rroberts11/bmore-population-analysis.git
 
