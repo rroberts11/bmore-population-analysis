@@ -63,7 +63,7 @@ investment in economic development, and efforts to revitalize neighborhoods. If 
 population loss could exacerbate existing disparities and hinder long-term growth, making it harder for 
 the city to compete and thrive in an increasingly competitive national landscape.''')
 
- Render dataset table
+# Render dataset table
 table = go.Figure(data=[go.Table(
     header=dict(values=list(bmore_pop_data.columns),
                fill_color='black',
