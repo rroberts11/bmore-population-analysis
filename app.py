@@ -18,6 +18,9 @@ bmore_pop_data = bmore_pop_data.rename(columns={"Year": "year",
 bmore_pop_data['year_on_year_change'] = bmore_pop_data['year_on_year_change'].replace('-', np.nan)
 bmore_pop_data['change_in_percent'] = bmore_pop_data['change_in_percent'].replace('-', np.nan)
 
+# fill null value in 'change_in_percent' column
+bmore_pop_data['change_in_percent'] = bmore_pop_data['change_in_percent'].fillna(0)
+
 # ['population'] remove commas and convert values to int
 bmore_pop_data['population'] = bmore_pop_data['population'].str.replace(',', '')
 bmore_pop_data['population'] = bmore_pop_data['population'].astype('int')
