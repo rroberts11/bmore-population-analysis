@@ -60,6 +60,8 @@ investment in economic development, and efforts to revitalize neighborhoods. If 
 population loss could exacerbate existing disparities and hinder long-term growth, making it harder for 
 the city to compete and thrive in an increasingly competitive national landscape.''')
 
+# Convert year column to string to display properly via streamlit
+bmore_pop_data['year'] = bmore_pop_data['year'].astype(str)
 
 # Baltimore pop. dataframe
 st.dataframe(bmore_pop_data)
