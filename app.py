@@ -3,52 +3,54 @@ import numpy as np
 
 import plotly.express as px
 import streamlit as st
-import plotly.graph_objects as goimport plotly.graph_objects as go
+import plotly.graph_objects as go
 
-
+# Import csv data 
 bmore_pop_data = pd.read_csv('baltimore_population_2000_2023.csv')
 
-# rename columns for referencing 
+# Rename columns for referencing 
 bmore_pop_data = bmore_pop_data.rename(columns={"Year": "year", 
                                                 "Population": "population", 
                                                 "Year on Year Change": "year_on_year_change", 
                                                 "Change in Percent": "change_in_percent"})
 
-# remove commas from pop values so they can be converted from objs to ints
-bmore_pop_data['population'] = bmore_pop_data['population'].str.replace(',', '')
+# remove "-" from first row 
+bmore_pop_data['year_on_year_change'] = bmore_pop_data['year_on_year_change'].replace('-', np.nan)
+bmore_pop_data['change_in_percent'] = bmore_pop_data['change_in_percent'].replace('-', np.nan)
 
-# convert population values to integer values 
+# ['population'] remove commas and convert values to int
+bmore_pop_data['population'] = bmore_pop_data['population'].str.replace(',', '')
 bmore_pop_data['population'] = bmore_pop_data['population'].astype('int')
 
-# remove "-" from first row 
-bmore_pop_data['year_on_year_change'] = bmore_pop_data['year_on_year_change'].replace('-', "0")
-
-# remove commas from pop values so they can be converted from objs to ints
+# ['year_on_year_change'] remove commas, fill NaN values and convert to int
 bmore_pop_data['year_on_year_change'] = bmore_pop_data['year_on_year_change'].str.replace(',', '')
+bmore_pop_data['year_on_year_change'] = pd.to_numeric(bmore_pop_data['year_on_year_change'], 
+                                                      errors='coerce').fillna(0).astype(int)
 
-# convert population values to integer values 
-bmore_pop_data['year_on_year_change'] = bmore_pop_data['year_on_year_change'].astype('int')
 
-# remove "-" from first row 
-bmore_pop_data['change_in_percent'] = bmore_pop_data['change_in_percent'].replace('-', "0")
+# Calculate statistics 
+def calculate_statistics(df):
+    avg_pop_loss = int(df['year_on_year_change'].mean())
+    total_pop_loss = int(df['population'].max() - df['population'].min())
+    return avg_pop_loss, total_pop_loss
 
-# Calculate average loss per year
-avg_pop_loss = int(bmore_pop_data['year_on_year_change'].mean())
+avg_pop_loss, total_pop_loss = calculate_statistics(bmore_pop_data)
 
-# Calculate total population loss
-total_pop_loss = int(bmore_pop_data['population'].max() - bmore_pop_data['population'].min())
 
-# Scatterplot using year vs population to show decline in population since 2000
-fig = px.scatter(bmore_pop_data, x='year', y='population',
+# Render scatter_plot 
+scatter_plot = px.scatter(bmore_pop_data, x='year', y='population',
                  labels={'year': 'Year', 'population': 'Population'})
 
-fig2 = px.bar(bmore_pop_data, x='year', y='year_on_year_change',  
+# Render bar_plot
+bar_plot = px.bar(bmore_pop_data, x='year', y='year_on_year_change',  
              labels={'year_on_year_change': '# of people per year', 'year': 'Year'})
 
+
+
+# Streamlit app components 
+
+# Title
 st.title("Tracking Baltimore City's Population Decline (2000-2023)")
-st.write('')
-
-
 
 # Paragraph about population decline in Baltimore City
 st.write('''Baltimore's population has been steadily declining for the past several decades, 
@@ -62,50 +64,33 @@ population loss could exacerbate existing disparities and hinder long-term growt
 the city to compete and thrive in an increasingly competitive national landscape.''')
 
 # Render dataset table
-table = go.Figure(data=[go.Table(
-    header=dict(values=list(bmore_pop_data.columns),
-                fill_color='black',
-                align='center'),
-    cells=dict(values=[bmore_pop_data[col] for col in bmore_pop_data.columns],
-               fill_color='black',
-               align='center'))
-])
+#table = go.Figure(data=[go.Table(
+#    header=dict(values=list(bmore_pop_data.columns),
+#               fill_color='black',
+#                align='center'),
+#    cells=dict(values=[bmore_pop_data[col] for col in bmore_pop_data.columns],
+#               fill_color='black',
+#               align='center'))
+#])
 
-table = go.Figure(data=[go.Table(
-    header=dict(values=list(bmore_pop_data.columns),
-                fill_color='black',
-                align='center'),
-    cells=dict(values=[bmore_pop_data[col] for col in bmore_pop_data.columns],
-               fill_color='black',
-               align='center'))
-])
+# Baltimore pop. df table & Plots
+col1, col2 = st.columns(2)
 
-# Baltimore pop. dataframe
-st.plotly_chart(table)
-st.plotly_chart(table)
+with col1:
+    if st.checkbox('Show scatterplot'):
+        st.plotly_chart(scatter_plot)
+        st.text(f'''The chart above shows a significant decrease from 2000-2023. There was a slight 
+        boom in population around 2010, then a flatline, followed by another dip in 2015. 
+        The total decrease equaling {total_pop_loss} people.''')
 
-# Scatterplot
-show_data = st.checkbox('Show scatterplot')
+with col2:
+    if st.checkbox('Show bar chart'):
+        st.plotly_chart(bar_plot)
+        st.text('''This chart offers a different perspective, highlighting both the positive and 
+        negative population changes over the past 23 years, and illustrating the patterns of 
+        inflows vs outflows of people.''')
 
-if show_data:
-    st.plotly_chart(fig)
-
-    st.text(f'''        The chart above shows a significant decrease from 2000-2023. There was a slight 
-    boom in population around 2010, then a flatline, followed by another dip in 2015. 
-    The total decrease equaling {total_pop_loss} people.''')
-else:
-    st.write('Check the box to see info.')
-
-# Histogram
-show_data2 = st.checkbox('Show histogram')
-
-if show_data2:
-    st.plotly_chart(fig2)
-
-    st.text('''     This chart offers a different perspective, highlighting both the positive and 
-    negative population changes over the past 23 years, and illustrating the patterns of 
-    inflows vs outflows of people.''')
-else:
-    st.write('Check the box to see info.')
+if st.checkbox('Show data table'):
+    st.dataframe(table)
 
 
