@@ -63,19 +63,19 @@ investment in economic development, and efforts to revitalize neighborhoods. If 
 population loss could exacerbate existing disparities and hinder long-term growth, making it harder for 
 the city to compete and thrive in an increasingly competitive national landscape.''')
 
-# Render dataset table
-#table = go.Figure(data=[go.Table(
-#    header=dict(values=list(bmore_pop_data.columns),
-#               fill_color='black',
-#                align='center'),
-#    cells=dict(values=[bmore_pop_data[col] for col in bmore_pop_data.columns],
-#               fill_color='black',
-#               align='center'))
-#])
+ Render dataset table
+table = go.Figure(data=[go.Table(
+    header=dict(values=list(bmore_pop_data.columns),
+               fill_color='black',
+               align='center'),
+    cells=dict(values=[bmore_pop_data[col] for col in bmore_pop_data.columns],
+               fill_color='black',
+               align='center'))
+])
 
 # Baltimore pop. df table & Plots
 if st.checkbox('Show data table'):
-    st.dataframe(bmore_pop_data)
+    st.plotly_chart(table)
 
 if st.checkbox('Show scatterplot'):
     st.plotly_chart(scatter_plot)
