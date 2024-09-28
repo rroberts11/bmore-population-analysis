@@ -28,7 +28,7 @@ Highlights key years with significant population changes.
 Interactive visualizations to explore the data in-depth.
 
 ## Technologies
-This project is built with:
+### This project is built with:
 
 - Python 3.10+: The core programming language used for data analysis and processing.
 - pandas: For handling and analyzing data structures efficiently.
@@ -39,7 +39,7 @@ This project is built with:
 - Plotly: For interactive graphing and charting.
 
 ## Installation
-Prerequisites
+### Prerequisites
 - Python 3.10+: Ensure you have Python 3.10 or higher installed on your machine.
 - pip: You need pip to install the required Python libraries.
 
