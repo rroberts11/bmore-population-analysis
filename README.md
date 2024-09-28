@@ -59,9 +59,6 @@ Interactive visualizations to explore the data in-depth.
 ### Install the dependencies:
 - pip install -r requirements.txt
 
-### Run the Streamlit app (if applicable):
-- streamlit run app.py
-
 ## Usage
 To run the application and explore the population analysis:
 
@@ -79,7 +76,7 @@ Name: Ryan Roberts
 
 Email: rroberts.ds@gmail.com
 
-LinkedIn: Ryan Roberts on LinkedIn
+LinkedIn: https://www.linkedin.com/in/ryan-roberts-51775b147?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
 
 
 Web app : https://bmore-population-analysis.onrender.com/

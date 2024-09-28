@@ -79,15 +79,11 @@ if st.checkbox('Show data table'):
 
 if st.checkbox('Show scatterplot'):
     st.plotly_chart(scatter_plot)
-    st.text(f'''The chart above shows a significant decrease from 2000-2023. There was a slight 
-    boom in population around 2010, then a flatline, followed by another dip in 2015. 
-    The total decrease equaling {total_pop_loss} people.''')
+    st.text("The chart above visualizes the decline from 2000-2023.")
 
 if st.checkbox('Show bar chart'):
     st.plotly_chart(bar_plot)
-    st.text('''This chart offers a different perspective, highlighting both the positive and 
-    negative population changes over the past 23 years, and illustrating the patterns of 
-    inflows vs outflows of people.''')
+    st.text('''This chart offers a different perspective, giving a clear view of the inflows and outflows of the population. You're able to clearly see the spike in 2010 and dip in 2020 here.''')
 
 
 
