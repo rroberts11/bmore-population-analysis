@@ -5,7 +5,7 @@ import plotly.express as px
 import streamlit as st
 
 
-bmore_pop_data = pd.read_csv('baltimore_population_2000_2023.csv')
+bmore_pop_data = pd.read_csv('baltimore_population_2000_2023.csv', encoding='utf-8')
 
 # rename columns for referencing 
 bmore_pop_data = bmore_pop_data.rename(columns={"Year": "year", 
