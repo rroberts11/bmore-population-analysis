@@ -46,48 +46,32 @@ Prerequisites
 ## Steps to Install
 Clone the repository:
 
-bash
-Copy code
-git clone https://github.com/rroberts11/bmore-population-analysis.git
-Navigate to the project directory:
+- git clone https://github.com/rroberts11/bmore-population-analysis.git
 
-bash
-Copy code
-cd bmore-population-analysis
-Create and activate a virtual environment (optional but recommended):
+### Navigate to the project directory:
+- cd bmore-population-analysis
 
-bash
-Copy code
-python -m venv env
-source env/bin/activate  # For macOS/Linux
-env\Scripts\activate  # For Windows
-Install the dependencies:
+### Create and activate a virtual environment (optional but recommended):
+- python -m venv env source
+- env/bin/activate  # For macOS/Linux
+- env\Scripts\activate  # For Windows
 
-bash
-Copy code
-pip install -r requirements.txt
+### Install the dependencies:
+- pip install -r requirements.txt
 
-Run the Streamlit app (if applicable):
-
-bash
-Copy code
-streamlit run app.py
+### Run the Streamlit app (if applicable):
+- streamlit run app.py
 
 ## Usage
 To run the application and explore the population analysis:
 
 Ensure you have installed all dependencies by following the installation steps.
 
-Run the Streamlit app using the following command:
+### Run the Streamlit app using the following command:
+- streamlit run app.py
 
-bash
-Copy code
-streamlit run app.py
-Once the app is running, open your browser and navigate to the provided URL:
-
-arduino
-Copy code
-http://localhost:10000
+### Once the app is running, open your browser and navigate to the provided URL:
+- http://localhost:10000
 You will be able to explore various visualizations and insights related to the population trends in Baltimore City from 2000 to 2023.
 
 ## Contact
