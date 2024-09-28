@@ -28,7 +28,7 @@ bmore_pop_data['year_on_year_change'] = pd.to_numeric(bmore_pop_data['year_on_ye
                                                       errors='coerce').fillna(0).astype(int)
 
 
-# Calculate statistics 
+# Calculate statistics , avg and total loss since 2000
 def calculate_statistics(df):
     avg_pop_loss = int(df['year_on_year_change'].mean())
     total_pop_loss = int(df['population'].max() - df['population'].min())
