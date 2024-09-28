@@ -74,23 +74,21 @@ the city to compete and thrive in an increasingly competitive national landscape
 #])
 
 # Baltimore pop. df table & Plots
-col1, col2 = st.columns(2)
-
-with col1:
-    if st.checkbox('Show scatterplot'):
-        st.plotly_chart(scatter_plot)
-        st.text(f'''The chart above shows a significant decrease from 2000-2023. There was a slight 
-        boom in population around 2010, then a flatline, followed by another dip in 2015. 
-        The total decrease equaling {total_pop_loss} people.''')
-
-with col2:
-    if st.checkbox('Show bar chart'):
-        st.plotly_chart(bar_plot)
-        st.text('''This chart offers a different perspective, highlighting both the positive and 
-        negative population changes over the past 23 years, and illustrating the patterns of 
-        inflows vs outflows of people.''')
-
 if st.checkbox('Show data table'):
-    st.dataframe(table)
+    st.dataframe(bmore_pop_data)
+
+if st.checkbox('Show scatterplot'):
+    st.plotly_chart(scatter_plot)
+    st.text(f'''The chart above shows a significant decrease from 2000-2023. There was a slight 
+    boom in population around 2010, then a flatline, followed by another dip in 2015. 
+    The total decrease equaling {total_pop_loss} people.''')
+
+if st.checkbox('Show bar chart'):
+    st.plotly_chart(bar_plot)
+    st.text('''This chart offers a different perspective, highlighting both the positive and 
+    negative population changes over the past 23 years, and illustrating the patterns of 
+    inflows vs outflows of people.''')
+
+
 
 
