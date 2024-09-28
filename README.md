@@ -48,7 +48,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/your-username/bmore-population-analysis.git
+git clone https://github.com/rroberts11/bmore-population-analysis.git
 Navigate to the project directory:
 
 bash
