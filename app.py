@@ -3,6 +3,7 @@ import numpy as np
 
 import plotly.express as px
 import streamlit as st
+import plotly.graph_objects as go
 
 
 bmore_pop_data = pd.read_csv('baltimore_population_2000_2023.csv')
@@ -60,8 +61,17 @@ investment in economic development, and efforts to revitalize neighborhoods. If 
 population loss could exacerbate existing disparities and hinder long-term growth, making it harder for 
 the city to compete and thrive in an increasingly competitive national landscape.''')
 
+table = go.Figure(data=[go.Table(
+    header=dict(values=list(bmore_pop_data.columns),
+                fill_color='black',
+                align='center'),
+    cells=dict(values=[bmore_pop_data[col] for col in bmore_pop_data.columns],
+               fill_color='black',
+               align='center'))
+])
+
 # Baltimore pop. dataframe
-st.write(bmore_pop_data)
+st.plotly_chart(table)
 
 # Scatterplot
 show_data = st.checkbox('Show scatterplot')
