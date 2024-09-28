@@ -62,7 +62,7 @@ the city to compete and thrive in an increasingly competitive national landscape
 
 
 # Baltimore pop. dataframe
-st.table(bmore_pop_data)
+st.dataframe(bmore_pop_data)
 
 # Scatterplot
 show_data = st.checkbox('Show scatterplot')
