@@ -76,7 +76,7 @@ Name: Ryan Roberts
 
 Email: rroberts.ds@gmail.com
 
-LinkedIn: https://www.linkedin.com/in/ryan-roberts-51775b147?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app
+LinkedIn: https://www.linkedin.com/in/ryan-roberts-51775b147/
 
 
 Web app : https://bmore-population-analysis.onrender.com/
